@@ -1,0 +1,140 @@
+Créate database clasebdtrabajo;
+CREATE TABLE estudiantes(
+    id int PRIMARY KEY,
+    nombre varchar(50),
+    apellido varchar(50),
+    edad int
+   
+    )
+
+INSERT INTO `estudiantes`(`id`, `nombre`, `apellido`, `edad`) VALUES (0,'andres','arjona','20');
+INSERT INTO `estudiantes`(`id`, `nombre`, `apellido`, `edad`) VALUES (1,'camilo','vargas','24');
+INSERT INTO `estudiantes`(`id`, `nombre`, `apellido`, `edad`) VALUES (2,'juan','arteta',18);
+INSERT INTO `estudiantes`(`id`, `nombre`, `apellido`, `edad`) VALUES (3,'keiner','ojeda',16);
+INSERT INTO `estudiantes`(`id`, `nombre`, `apellido`, `edad`) VALUES (4,'carlos','solano',21);
+INSERT INTO `estudiantes`(`id`, `nombre`, `apellido`, `edad`) VALUES (5,'jose','estrada',38);
+INSERT INTO `estudiantes`(`id`, `nombre`, `apellido`, `edad`) VALUES (6,'david','stren',40);
+INSERT INTO `estudiantes`(`id`, `nombre`, `apellido`, `edad`) VALUES (7,'jesus','alvares',29);
+
+CREATE TABLE matricula(
+    id int PRIMARY KEY,
+    num_matricula int,
+    id_estudiante int,
+    fecha_matricula date
+
+    )
+INSERT INTO `matricula`(`id`, `num_matricula`, `id_estudiante`, `fecha_matricula`) VALUES (1,32211,0,'01/02/2020');
+INSERT INTO `matricula`(`id`, `num_matricula`, `id_estudiante`, `fecha_matricula`) VALUES (2,12441,1,'04/03/2021');
+INSERT INTO `matricula`(`id`, `num_matricula`, `id_estudiante`, `fecha_matricula`) VALUES (3,25993,2,'09/05/2019');
+INSERT INTO `matricula`(`id`, `num_matricula`, `id_estudiante`, `fecha_matricula`) VALUES (4,16532,3,'03/09/2020');
+INSERT INTO `matricula`(`id`, `num_matricula`, `id_estudiante`, `fecha_matricula`) VALUES (5,18042,4,'10/07/2020');
+INSERT INTO `matricula`(`id`, `num_matricula`, `id_estudiante`, `fecha_matricula`) VALUES (6,13560,5,'16/05/2020');
+INSERT INTO `matricula`(`id`, `num_matricula`, `id_estudiante`, `fecha_matricula`) VALUES (7,86389,6,'20/04/2020');
+INSERT INTO `matricula`(`id`, `num_matricula`, `id_estudiante`, `fecha_matricula`) VALUES (8,82353,7,'24/06/2020');
+
+ALTER TABLE matricula
+ADD CONSTRAINT relacion
+FOREIGN KEY(id_estudiante)
+REFERENCES estudiantes(id);
+
+CREATE TABLE facultad(
+    id int PRIMARY KEY,
+    n_facultad varchar(50),
+    universidad varchar(50),
+    fecha_i date,
+    id_r int
+    )
+INSERT INTO `facultad`(`id`, `n_facultad`, `universidad`, `fecha_i`, `id_r`) VALUES (1,'ing_informatica','uni_reformada','05/02/2022',0);
+INSERT INTO `facultad`(`id`, `n_facultad`, `universidad`, `fecha_i`, `id_r`) VALUES (2,'ing_industrial','uni_libre','06/01/2021',1);
+INSERT INTO `facultad`(`id`, `n_facultad`, `universidad`, `fecha_i`, `id_r`) VALUES (3,'ing_mecanica','uni_norte','09/06/2022',2);
+INSERT INTO `facultad`(`id`, `n_facultad`, `universidad`, `fecha_i`, `id_r`) VALUES (4,'ing_ambiental','uni_simon','10/05/2022',3);
+INSERT INTO `facultad`(`id`, `n_facultad`, `universidad`, `fecha_i`, `id_r`) VALUES (5,'psicologia','uni_atlantico','12/04/2022',4);
+INSERT INTO `facultad`(`id`, `n_facultad`, `universidad`, `fecha_i`, `id_r`) VALUES (6,'administracion_empresas','uni_autonoma','15/01/2022',5);
+INSERT INTO `facultad`(`id`, `n_facultad`, `universidad`, `fecha_i`, `id_r`) VALUES (7,'contaduria','uni_metropolitana','20/03/2022',6);
+INSERT INTO `facultad`(`id`, `n_facultad`, `universidad`, `fecha_i`, `id_r`) VALUES (8,'ing_biomedica','uni_costa','13/02/2022',7);
+
+Alter table facultad
+Add constraint relacion3
+Foreign key(id_r)
+References estudiantes(id);
+
+
+CREATE TABLE asignatura(
+    id int PRIMARY KEY,
+    id_docente  int,
+    n_docente varchar(50),
+    nom_asignatura varchar(50)
+    
+    )
+INSERT INTO `asignatura`(`id`, `id_docente`, `n_docente`, `nom_asignatura`) VALUES (1,1,'william','desarrollo_bd');
+INSERT INTO `asignatura`(`id`, `id_docente`, `n_docente`, `nom_asignatura`) VALUES (2,2,'walter','quimica_general');
+INSERT INTO `asignatura`(`id`, `id_docente`, `n_docente`, `nom_asignatura`) VALUES (3,3,'alexander','algebra_lineal');
+INSERT INTO `asignatura`(`id`, `id_docente`, `n_docente`, `nom_asignatura`) VALUES (4,4,'braulio','biologia');
+INSERT INTO `asignatura`(`id`, `id_docente`, `n_docente`, `nom_asignatura`) VALUES (5,5,'karen','psicologia_general');
+INSERT INTO `asignatura`(`id`, `id_docente`, `n_docente`, `nom_asignatura`) VALUES (6,6,'daniel','contabilidad_financiera');
+INSERT INTO `asignatura`(`id`, `id_docente`, `n_docente`, `nom_asignatura`) VALUES (7,7,'karen','fundamentos_economia');
+INSERT INTO `asignatura`(`id`, `id_docente`, `n_docente`, `nom_asignatura`) VALUES (8,8,'sandra','fundamentos_quimica');
+
+SELECT*
+FROM facultad
+LEFT JOIN asignatura
+ON facultad.id=asignatura.n_docente;
+
+SELECT*
+FROM facultad
+RIGHT JOIN asignatura
+ON facultad.id=asignatura.n_docente;
+
+SELECT*
+FROM facultad
+CROSS JOIN asignatura
+ON facultad.id=asignatura.id_docente;
+
+
+
+SELECT*
+FROM estudiantes
+LEFT JOIN facultad
+ON estudiantes.id=facultad.id
+LEFT JOIN asignatura
+ON asignatura.id=facultad.id
+LEFT JOIN matricula
+ON matricula.id_estudiante=estudiantes.id
+
+
+
+SELECT*
+FROM estudiantes
+RIGHT JOIN facultad
+ON estudiantes.id=facultad.id
+RIGHT JOIN asignatura
+ON asignatura.id=facultad.id
+RIGHT JOIN matricula
+ON matricula.id_estudiante=estudiantes.id;
+
+
+SELECT*
+FROM estudiantes
+CROSS JOIN facultad
+ON estudiantes.id=facultad.id_r
+CROSS JOIN matricula
+ON estudiantes.id=matricula.id_estudiante
+CROSS JOIN asignatura
+ON asignatura.id_docente=facultad.id;
+
+
+
+
+
+SELECT*
+FROM estudiantes
+INNER JOIN facultad
+ON estudiantes.id=facultad.id_r
+INNER JOIN matricula
+ON estudiantes.id=matricula.id_estudiante
+INNER JOIN asignatura
+ON asignatura.id_docente=facultad.id;
+SELECT*
+FROM facultad
+INNER JOIN asignatura
+ON facultad.id=asignatura.id_docente;
