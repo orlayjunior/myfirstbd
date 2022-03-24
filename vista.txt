@@ -1,0 +1,10 @@
+CREATE VIEW comentarios_v1
+AS SELECT id_chef,id_receta,comentario_opcional,id_plato,comentario_personal,id_menus,comentarioA,comentarioB,comentarioC
+FROM comentarios
+Where id=1;
+
+
+CREATE VIEW comentarios_v2
+AS SELECT id_chef,id_receta,comentario_opcional,id_plato,comentario_personal,id_menus,comentarioA,comentarioB,comentarioC
+FROM comentarios
+Where id=2;
