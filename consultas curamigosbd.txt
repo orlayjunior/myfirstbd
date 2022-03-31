@@ -1,0 +1,446 @@
+consultas:
+SELECT*
+FROM amigos
+WHERE amigos.id_emisor_fk=1;
+
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_receptor_fk=1;
+
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_emisor_fk=2;
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_receptor_fk=2;
+
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_emisor_fk=3;
+
+
+
+
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_receptor_fk=3;
+
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_emisor_fk=4;
+
+
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_receptor_fk=4;
+
+
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_emisor_fk=5;
+
+
+
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_receptor_fk=5;
+
+
+
+
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_emisor_fk=6;
+
+
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_receptor_fk=6;
+
+
+
+
+
+
+SELECT*
+FROM amigos
+WHERE amigos.id_receptor_fk=7;
+
+
+
+
+left join, right join, cross join:
+
+
+
+
+
+SELECT *
+FROM personas
+LEFT JOIN amigos
+ON personas.id=amigos.fecha_solicitud;
+
+
+
+
+
+SELECT *
+FROM personas
+LEFT JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_emisor_fk=1;
+
+
+SELECT *
+FROM personas
+LEFT JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_receptor_fk=1
+
+
+
+
+
+
+
+
+SELECT *
+FROM personas
+RIGHT JOIN amigos
+ON personas.id=amigos.estado;
+
+
+
+
+SELECT *
+FROM personas
+RIGHT JOIN amigos
+ON personas.id=amigos.estado
+WHERE amigos.id_emisor_fk=1;
+
+
+
+SELECT *
+FROM personas
+RIGHT JOIN amigos
+ON personas.id=amigos.estado
+WHERE amigos.id_receptor_fk=1;
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk;
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_emisor_fk=1;
+
+
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_receptor_fk=1;
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_emisor_fk=2;
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_receptor_fk=2;
+
+
+
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_emisor_fk=3;
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_receptor_fk=3;
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_emisor_fk=4;
+
+
+
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_receptor_fk=4;
+
+
+
+
+
+
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_emisor_fk=5;
+
+
+
+
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_receptor_fk=5;
+
+
+
+
+
+
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_emisor_fk=6;
+
+
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_receptor_fk=6;
+
+
+
+
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_emisor_fk=7;
+
+
+
+
+
+
+
+SELECT *
+FROM personas
+CROSS JOIN amigos
+ON personas.id=amigos.id_emisor_fk
+WHERE amigos.id_receptor_fk=7;
+
+
+
+
+
+
+
+
+vistas:
+
+CREATE VIEW curamigos_v1
+AS SELECT id_emisor_fk,id_receptor_fk,estado
+FROM amigos;
+
+
+
+CREATE VIEW curamigos_v2
+AS SELECT id_emisor_fk,id_receptor_fk,fecha_solicitud,fecha_aceptacion,estado
+FROM amigos
+
+
+
+
+CREATE VIEW curamigos_v3
+AS SELECT correo,id_emisor_fk,id_receptor_fk,estado
+FROM personas,amigos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
