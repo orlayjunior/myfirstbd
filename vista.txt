@@ -8,3 +8,129 @@ CREATE VIEW comentarios_v2
 AS SELECT id_chef,id_receta,comentario_opcional,id_plato,comentario_personal,id_menus,comentarioA,comentarioB,comentarioC
 FROM comentarios
 Where id=2;
+
+
+
+
+
+join
+
+
+
+SELECT*
+FROM documentacion
+LEFT JOIN ubicacion
+ON documentacion.id=ubicacion.ubi_nomA;
+
+
+
+SELECT*
+FROM documentacion
+LEFT JOIN ubicacion
+ON documentacion.id=ubicacion.ubi_nomA
+LEFT JOIN recetas
+ON ubicacion.id=recetas.id_u;
+
+
+
+
+
+SELECT*
+FROM documentacion
+LEFT JOIN ubicacion
+ON documentacion.id=ubicacion.ubi_nomA
+LEFT JOIN recetas
+ON ubicacion.id=recetas.id_u
+LEFT JOIN plato
+ON recetas.id=plato.id_rec;
+
+
+
+
+
+
+
+SELECT*
+FROM documentacion
+LEFT JOIN ubicacion
+ON documentacion.id=ubicacion.ubi_nomA
+LEFT JOIN recetas
+ON ubicacion.id=recetas.id_u
+LEFT JOIN plato
+ON recetas.id=plato.id_rec
+LEFT JOIN menus
+ON plato.id=menus.id_plato
+LEFT JOIN comentarios
+ON menus.id=comentarios.id_chef;
+
+
+
+
+
+
+
+
+SELECT*
+FROM documentacion
+RIGHT JOIN ubicacion
+ON documentacion.id=ubicacion.ubi_nomA
+RIGHT JOIN recetas
+ON ubicacion.id=recetas.id_u
+RIGHT JOIN plato
+ON recetas.id=plato.id_rec
+RIGHT JOIN menus
+ON plato.id=menus.id_plato
+RIGHT JOIN comentarios
+ON menus.id=comentarios.id_chef;
+
+
+
+
+
+
+SELECT*
+FROM documentacion
+CROSS JOIN ubicacion
+ON documentacion.id=ubicacion.id_doc
+CROSS JOIN recetas
+ON ubicacion.id=recetas.id_u
+CROSS JOIN plato
+ON recetas.id=plato.id_rec
+CROSS JOIN menus
+ON plato.id=menus.id_plato
+CROSS JOIN comentarios
+ON menus.id=comentarios.id_chef;
+
+
+
+
+
+orlay marchena solano
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
